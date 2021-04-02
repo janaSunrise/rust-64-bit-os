@@ -1,7 +1,7 @@
 # Rust 64-bit OS
 
-This is an operating system with a kernel supporting x64 bit written from scratch using
-the rust programming language.
+  This is an operating system with a kernel supporting x64 bit written from scratch using
+  the rust programming language.
 
 ## Notes
 
@@ -15,7 +15,7 @@ To describe different environments, Rust uses a string called target triple. You
 By compiling for our host triple, the Rust compiler and the linker assume that there is an underlying operating system such as Linux or Windows that use the C runtime by default, which causes the linker errors. So to avoid the linker errors, we can compile for a different environment with no underlying operating system.
 
 An example for such a bare metal environment is the `thumbv7em-none-eabihf` target triple, which describes an 
-[embedded](https://en.wikipedia.org/wiki/Embedded_system) [ARM](https://en.wikipedia.org/wiki/ARM_architecture)system. 
+[embedded](https://en.wikipedia.org/wiki/Embedded_system) [ARM](https://en.wikipedia.org/wiki/ARM_architecture) system. 
 The details are not important, all that matters is that the target triple has no underlying operating system, 
 which is indicated by the none in the target triple. 
 To be able to compile for this target, we need to add it in rustup:
@@ -31,7 +31,7 @@ To be able to compile for this target, we need to add it in rustup:
   - Windows: `cargo rustc -- -C link-args="/ENTRY:_start /SUBSYSTEM:console"`
   - MacOS: `cargo rustc -- -C link-args="-e __start -static"`
 
-
+<br />
 <div align="center">
   Made by Sunrit Jana with <3
 </div>
