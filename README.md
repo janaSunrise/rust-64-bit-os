@@ -31,6 +31,10 @@ Command: `qemu-system-x86_64 -drive format=raw,file=target/x86_64-rust-64-bit-os
 ## Notes
 
 ### Building for bare metal target
+
+<details>
+<summary>Building for bare metal target</summary>
+
 By default Rust tries to build an executable that is able to run in your current system environment. 
 For example, if you're using Windows on `x86_64`, Rust tries to build a `.exe` Windows executable that 
 uses `x86_64` instructions.
@@ -46,7 +50,12 @@ The details are not important, all that matters is that the target triple has no
 which is indicated by the none in the target triple. 
 To be able to compile for this target, we need to add it in rustup.
 
+</details>
+
 ### The Boot Process
+
+<details>
+<summary>The BOOT Process</summary>
 
 When you turn on a computer, it begins executing firmware code that is stored in motherboard ROM. 
 This code performs a power-on self-test, detects available RAM, and pre-initializes the CPU and hardware. 
@@ -54,7 +63,43 @@ Afterwards it looks for a bootable disk and starts booting the operating system 
 
 On x86, there are two firmware standards: the "Basic Input/Output System" (BIOS) and the newer "Unified Extensible Firmware Interface" (UEFI). The BIOS standard is old and outdated, but simple and well-supported on any x86 machine since the 1980s. UEFI, in contrast, is more modern and has much more features, but is more complex to set up
 
+</details>
+
+#### BIOS BOOT
+
+<details>
+<summary>BIOS BOOT</summary>
+
+Almost all x86 systems have support for BIOS booting, including newer UEFI-based machines that use an emulated BIOS. This is great, because you can use the same boot logic across all machines from the last centuries. But this wide compatibility is at the same time the biggest disadvantage of BIOS booting, because it means that the CPU is put into a 16-bit compatibility mode called real mode before booting so that archaic bootloaders from the 1980s would still work.
+
+</details>
+
+#### Multiboot standard
+
+
+<details>
+<summary>MultiBoot Standard</summary>
+
+To avoid that every operating system implements its own bootloader, which is only compatible with a single OS, the Free Software Foundation created an open bootloader standard called Multiboot in 1995. The standard defines an interface between the bootloader and operating system, so that any Multiboot compliant bootloader can load any Multiboot compliant operating system. The reference implementation is GNU GRUB, which is the most popular bootloader for Linux systems.
+
+To make a kernel Multiboot compliant, one just needs to insert a so-called Multiboot header at the beginning of the kernel file. This makes it very easy to boot an OS in GRUB. However, GRUB and the Multiboot standard have some problems too:
+
+- They support only the 32-bit protected mode. This means that you still have to do the CPU configuration to switch to the 64-bit long mode.
+
+- They are designed to make the bootloader simple instead of the kernel. For example, the kernel needs to be linked with an adjusted default page size, because GRUB can't find the Multiboot header otherwise. Another example is that the boot information, which is passed to the kernel, contains lots of architecture dependent structures instead of providing clean abstractions.
+
+- Both GRUB and the Multiboot standard are only sparsely documented.
+
+- GRUB needs to be installed on the host system to create a bootable disk image from the kernel file. This makes development on Windows or Mac more difficult.
+
+
+</details>
+
 ### VGA Text Buffer
+
+
+<details>
+<summary>VGA Text Buffer</summary>
 
 To print a character to the screen in VGA text mode, one has to write it to the text buffer of the VGA hardware. The VGA text buffer is a two-dimensional array with typically 25 rows and 80 columns, which is directly rendered to the screen. Each array entry describes a single screen character through the following format:
 
@@ -80,6 +125,7 @@ The second byte defines how the character is displayed. The first four bits defi
 | 0x6    | Brown      | 0xe                 | Yellow       |
 | 0x7    | Light Gray | 0xf                 | White        |
 
+</details>
 
 <br />
 <div align="center">
