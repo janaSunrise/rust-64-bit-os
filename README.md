@@ -3,7 +3,7 @@
   This is an operating system with a kernel supporting x64 bit written from scratch using
   the rust programming language.
 
-## Notes and commands
+## Notes
 
 By default Rust tries to build an executable that is able to run in your current system environment. 
 For example, if you're using Windows on `x86_64`, Rust tries to build a `.exe` Windows executable that 
@@ -18,7 +18,9 @@ An example for such a bare metal environment is the `thumbv7em-none-eabihf` targ
 [embedded](https://en.wikipedia.org/wiki/Embedded_system) [ARM](https://en.wikipedia.org/wiki/ARM_architecture) system. 
 The details are not important, all that matters is that the target triple has no underlying operating system, 
 which is indicated by the none in the target triple. 
-To be able to compile for this target, we need to add it in rustup:
+To be able to compile for this target, we need to add it in rustup.
+
+## Commands
 
 #### Adding target for compilation on systems without OS, for example: bare metals
   - Command: `rustup target add thumbv7em-none-eabihf`
@@ -38,11 +40,6 @@ To be able to compile for this target, we need to add it in rustup:
   - Installation: `cargo install bootimage`
   - Add comp: `rustup component add llvm-tools-preview`
   - Usage: `cargo bootimage`
-
-After executing the command, you should see a bootable disk image named `bootimage-rust-64-bit-os.bin` in your 
-`target/x86_64-rust-64-bit-os/debug` directory. You can boot it in a virtual machine or copy it to an USB drive to boot 
-it on real hardware. (Note that this is not a CD image, which have a different format, so burning it to a 
-CD doesn't work).
 
 ### Booting
 
