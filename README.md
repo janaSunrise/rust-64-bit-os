@@ -46,6 +46,14 @@ The details are not important, all that matters is that the target triple has no
 which is indicated by the none in the target triple. 
 To be able to compile for this target, we need to add it in rustup.
 
+### The Boot Process
+
+When you turn on a computer, it begins executing firmware code that is stored in motherboard ROM. 
+This code performs a power-on self-test, detects available RAM, and pre-initializes the CPU and hardware. 
+Afterwards it looks for a bootable disk and starts booting the operating system kernel.
+
+On x86, there are two firmware standards: the "Basic Input/Output System" (BIOS) and the newer "Unified Extensible Firmware Interface" (UEFI). The BIOS standard is old and outdated, but simple and well-supported on any x86 machine since the 1980s. UEFI, in contrast, is more modern and has much more features, but is more complex to set up
+
 ### VGA Text Buffer
 
 To print a character to the screen in VGA text mode, one has to write it to the text buffer of the VGA hardware. The VGA text buffer is a two-dimensional array with typically 25 rows and 80 columns, which is directly rendered to the screen. Each array entry describes a single screen character through the following format:
