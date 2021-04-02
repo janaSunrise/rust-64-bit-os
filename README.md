@@ -45,7 +45,7 @@ After executing the command, you should see a bootable disk image named `bootima
 it on real hardware. (Note that this is not a CD image, which have a different format, so burning it to a 
 CD doesn't work).
 
-### Booting
+#### Booting
 
 Command: `qemu-system-x86_64 -drive format=raw,file=target/x86_64-rust-64-bit-os/debug/bootimage-rust-64-bit-os.bin`
 
