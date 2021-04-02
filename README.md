@@ -3,7 +3,7 @@
   This is an operating system with a kernel supporting x64 bit written from scratch using
   the rust programming language.
 
-## Notes
+## More info and commands
 
 By default Rust tries to build an executable that is able to run in your current system environment. 
 For example, if you're using Windows on `x86_64`, Rust tries to build a `.exe` Windows executable that 
@@ -20,20 +20,34 @@ The details are not important, all that matters is that the target triple has no
 which is indicated by the none in the target triple. 
 To be able to compile for this target, we need to add it in rustup:
 
-- Adding target for compilation on systems without OS, for example: bare metals
+#### Adding target for compilation on systems without OS, for example: bare metals
   - Command: `rustup target add thumbv7em-none-eabihf`
 
-- Building the target for No-OS systems
+#### Building the target for No-OS systems
   - Command: `cargo build --target thumbv7em-none-eabihf`
 
-- Linker commands
+#### Linker commands
   - Linux: `cargo rustc -- -C link-arg=-nostartfiles`
   - Windows: `cargo rustc -- -C link-args="/ENTRY:_start /SUBSYSTEM:console"`
   - MacOS: `cargo rustc -- -C link-args="-e __start -static"`
 
-- In order to recompile these libraries, cargo needs access to the rust source code. The library `rust-src` can
+#### In order to recompile these libraries, cargo needs access to the rust source code. The library `rust-src` can
 be installed using
   - Command: `rustup component add rust-src`
+
+#### Installing bootimage, Adding a `LLVM tools preview` component and using it for running the OS
+  - Installation: `cargo install bootimage`
+  - Add comp: `rustup component add llvm-tools-preview`
+  - Usage: `cargo bootimage`
+
+After executing the command, you should see a bootable disk image named `bootimage-rust-64-bit-os.bin` in your 
+`target/x86_64-rust-64-bit-os/debug` directory. You can boot it in a virtual machine or copy it to an USB drive to boot 
+it on real hardware. (Note that this is not a CD image, which have a different format, so burning it to a 
+CD doesn't work).
+
+### Booting
+
+Command: `qemu-system-x86_64 -drive format=raw,file=target/x86_64-rust-64-bit-os/debug/bootimage-rust-64-bit-os.bin`
 
 <br />
 <div align="center">
