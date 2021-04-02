@@ -22,21 +22,21 @@ To be able to compile for this target, we need to add it in rustup.
 
 ## Commands
 
-#### Adding target for compilation on systems without OS, for example: bare metals
+### Adding target for compilation on systems without OS, for example: bare metals
   - Command: `rustup target add thumbv7em-none-eabihf`
 
-#### Building the target for No-OS systems
+### Building the target for No-OS systems
   - Command: `cargo build --target thumbv7em-none-eabihf`
 
-#### Linker commands
+### Linker commands
   - Linux: `cargo rustc -- -C link-arg=-nostartfiles`
   - Windows: `cargo rustc -- -C link-args="/ENTRY:_start /SUBSYSTEM:console"`
   - MacOS: `cargo rustc -- -C link-args="-e __start -static"`
 
-#### In order to recompile these libraries, cargo needs access to the rust source code. The library `rust-src` can be installed using
+### Library `rust-src` to recompile the code, and get access to source code.
   - Command: `rustup component add rust-src`
 
-#### Installing bootimage, Adding a `LLVM tools preview` component and using it for running the OS
+#### Installing bootimage, Adding a `LLVM tools preview` component and for running the OS
   - Installation: `cargo install bootimage`
   - Add comp: `rustup component add llvm-tools-preview`
   - Usage: `cargo bootimage`
