@@ -3,7 +3,7 @@
   This is an operating system with a kernel supporting x64 bit written from scratch using
   the rust programming language.
 
-## More info and commands
+## Notes and commands
 
 By default Rust tries to build an executable that is able to run in your current system environment. 
 For example, if you're using Windows on `x86_64`, Rust tries to build a `.exe` Windows executable that 
@@ -44,7 +44,7 @@ After executing the command, you should see a bootable disk image named `bootima
 it on real hardware. (Note that this is not a CD image, which have a different format, so burning it to a 
 CD doesn't work).
 
-#### Booting
+### Booting
 
 Command: `qemu-system-x86_64 -drive format=raw,file=target/x86_64-rust-64-bit-os/debug/bootimage-rust-64-bit-os.bin`
 

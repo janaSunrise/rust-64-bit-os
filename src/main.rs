@@ -3,6 +3,8 @@
 
 use core::panic::PanicInfo;
 
+mod vga_buffer;
+
 static HELLO: &[u8] = b"Welcome to my x86_64 bit OS!";
 
 /// This function is called on panic.
