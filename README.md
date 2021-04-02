@@ -31,8 +31,7 @@ To be able to compile for this target, we need to add it in rustup:
   - Windows: `cargo rustc -- -C link-args="/ENTRY:_start /SUBSYSTEM:console"`
   - MacOS: `cargo rustc -- -C link-args="-e __start -static"`
 
-#### In order to recompile these libraries, cargo needs access to the rust source code. The library `rust-src` can
-be installed using
+#### In order to recompile these libraries, cargo needs access to the rust source code. The library `rust-src` can be installed using
   - Command: `rustup component add rust-src`
 
 #### Installing bootimage, Adding a `LLVM tools preview` component and using it for running the OS
