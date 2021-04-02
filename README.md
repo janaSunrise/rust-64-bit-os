@@ -130,7 +130,7 @@ The second byte defines how the character is displayed. The first four bits defi
 ### CPU Exceptions
 
 <details>
-<summary></summary>
+<summary>CPU Exceptions</summary>
 
 An exception signals that something is wrong with the current instruction. For example, the CPU issues an exception if the current instruction tries to divide by 0. When an exception occurs, the CPU interrupts its current work and immediately calls a specific exception handler function, depending on the exception type.
 
