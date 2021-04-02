@@ -31,6 +31,10 @@ To be able to compile for this target, we need to add it in rustup:
   - Windows: `cargo rustc -- -C link-args="/ENTRY:_start /SUBSYSTEM:console"`
   - MacOS: `cargo rustc -- -C link-args="-e __start -static"`
 
+- In order to recompile these libraries, cargo needs access to the rust source code. The library `rust-src` can
+be installed using
+  - Command: `rustup component add rust-src`
+
 <br />
 <div align="center">
   Made by Sunrit Jana with <3
