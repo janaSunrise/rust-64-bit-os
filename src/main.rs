@@ -11,16 +11,16 @@ pub extern "C" fn _start() -> ! {
     rust_64_bit_os::init();
 
     println!("It did not crash!");
+    rust_64_bit_os::hlt_loop();
 
-    loop {
-        use rust_64_bit_os::print;
-        print!("-");
-    }
+    // loop {}
 }
 
 /// This function is called on panic.
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
     println!("{}", info);
-    loop {}
+    rust_64_bit_os::hlt_loop();
+
+    // loop {}
 }
