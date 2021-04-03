@@ -12,8 +12,6 @@ pub extern "C" fn _start() -> ! {
 
     println!("It did not crash!");
     rust_64_bit_os::hlt_loop();
-
-    // loop {}
 }
 
 /// This function is called on panic.
@@ -21,6 +19,4 @@ pub extern "C" fn _start() -> ! {
 fn panic(info: &PanicInfo) -> ! {
     println!("{}", info);
     rust_64_bit_os::hlt_loop();
-
-    // loop {}
 }
