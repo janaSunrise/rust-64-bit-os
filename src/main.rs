@@ -2,8 +2,7 @@
 #![no_main]
 
 use core::panic::PanicInfo;
-
-mod vga_buffer;
+use rust_64_bit_os::println;
 
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
@@ -13,7 +12,10 @@ pub extern "C" fn _start() -> ! {
 
     println!("It did not crash!");
 
-    loop {}
+    loop {
+        use rust_64_bit_os::print;
+        print!("-");
+    }
 }
 
 /// This function is called on panic.
