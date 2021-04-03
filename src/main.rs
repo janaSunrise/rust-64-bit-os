@@ -1,7 +1,6 @@
 #![no_std]
 #![no_main]
 
-use x86_64::structures::paging::PageTable;
 use bootloader::{BootInfo, entry_point};
 use core::panic::PanicInfo;
 use rust_64_bit_os::println;
