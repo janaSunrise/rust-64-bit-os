@@ -150,6 +150,19 @@ For the full list of exceptions check out the [OSDev wiki](https://wiki.osdev.or
 
 </details>
 
+#### Double Fault
+
+<details>
+<summary>What is a double fault?</summary>
+
+In simplified terms, a double fault is a special exception that occurs when the CPU fails to invoke an exception handler. 
+For example, it occurs when a page fault is triggered but there is no page fault handler registered in the Interrupt Descriptor Table (IDT). 
+So it's kind of similar to catch-all blocks in programming languages with exceptions, e.g. `catch(...)` in C++ or `catch(Exception e)` in Java or C#.
+
+A double fault behaves like a normal exception. It has the vector number `8` and we can define a normal handler function for it in the IDT. It is really important to provide a double fault handler, because if a double fault is unhandled a fatal triple fault occurs. Triple faults can't be caught and most hardware reacts with a system reset.
+
+</details>
+
 **Thanks to [Phil OPP](https://github.com/phil-opp) for these valuable notes!**
 
 <br />

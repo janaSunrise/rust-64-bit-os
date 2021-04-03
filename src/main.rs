@@ -13,7 +13,7 @@ fn panic(_info: &PanicInfo) -> ! {
 
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
-    println!("Welcome to my x86_64 bit OS{}", "!");
+    println!("Welcome to my x86_64 bit OS!");
 
     loop {}
 }
