@@ -1,7 +1,11 @@
 # Rust 64-bit OS
 
-  This is an operating system with a kernel supporting x64 bit written from scratch using
-  the rust programming language.
+This is an operating system with a kernel supporting x64 bit written from scratch using
+the rust programming language.
+
+**NOTE**: Do note that this OS is just built for the learning, and testing purpose. It does have
+lots of features, but they're not ready to be used in production or in projects. I'll be building
+Actual OS once I've learnt, using rust.
 
 ## Commands
 
