@@ -7,7 +7,30 @@ the rust programming language.
 lots of features, but they're not ready to be used in production or in projects. I'll be building
 Actual OS once I've learnt, using rust.
 
-## Commands
+## Quickstart
+
+First, Get started with installing all the dependencies present using:
+
+```sh
+cargo build
+```
+
+It will install the dependencies, and setup the environment.
+
+Now, You need to generate the Raw image. You can do so using:
+
+```sh
+cargo bootimage
+```
+
+Finally, You did it! Now the thing left is to boot the raw Disk image. Note 
+that you need Qemu installed to do so. Here's the command for it:
+
+```sh
+qemu-system-x86_64 -drive format=raw,file=target/x86_64-rust-64-bit-os/debug/bootimage-rust-64-bit-os.bin
+```
+
+### Commands
 
 #### Adding target for compilation on systems without OS, for example: bare metals
   - Command: `rustup target add thumbv7em-none-eabihf`
@@ -28,7 +51,7 @@ Actual OS once I've learnt, using rust.
   - Add comp: `rustup component add llvm-tools-preview`
   - Usage: `cargo bootimage`
 
-### Booting
+#### Booting
 
 Command: `qemu-system-x86_64 -drive format=raw,file=target/x86_64-rust-64-bit-os/debug/bootimage-rust-64-bit-os.bin`
 
