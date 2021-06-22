@@ -1,4 +1,3 @@
-use fixed_size_block::FixedSizeBlockAllocator;
 use alloc::alloc::{GlobalAlloc, Layout};
 use core::ptr::null_mut;
 use x86_64::{
@@ -7,6 +6,7 @@ use x86_64::{
     },
     VirtAddr,
 };
+use fixed_size_block::FixedSizeBlockAllocator;
 
 pub mod bump;
 pub mod linked_list;
@@ -16,6 +16,7 @@ pub const HEAP_START: usize = 0x_4444_4444_0000;
 pub const HEAP_SIZE: usize = 100 * 1024; // 100 KiB
 
 #[global_allocator]
+// Fixed size allocator
 static ALLOCATOR: Locked<FixedSizeBlockAllocator> = Locked::new(FixedSizeBlockAllocator::new());
 
 pub fn init_heap(
@@ -35,6 +36,7 @@ pub fn init_heap(
         let frame = frame_allocator
             .allocate_frame()
             .ok_or(MapToError::FrameAllocationFailed)?;
+
         let flags = PageTableFlags::PRESENT | PageTableFlags::WRITABLE;
 
         unsafe { mapper.map_to(page, frame, flags, frame_allocator)?.flush() };
