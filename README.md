@@ -1,7 +1,7 @@
 # Rust 64-bit OS
 
-This is an operating system with a kernel supporting x64 bit written from scratch using
-the rust programming language.
+This is an operating system with a kernel supporting x64 bit written from scratch using the rust 
+programming language.
 
 **NOTE**: Do note that this OS is just built for the learning, and testing purpose. It does have
 lots of features, but they're not ready to be used in production or in projects. I'll be building
@@ -104,7 +104,7 @@ To be able to compile for this target, we need to add it in rustup.
 ### The Boot Process
 
 <details>
-<summary>The BOOT Process</summary>
+<summary>The Boot Process</summary>
 
 When you turn on a computer, it begins executing firmware code that is stored in motherboard ROM. 
 This code performs a power-on self-test, detects available RAM, and pre-initializes the CPU and hardware. 
@@ -114,10 +114,10 @@ On x86, there are two firmware standards: the "Basic Input/Output System" (BIOS)
 
 </details>
 
-#### BIOS BOOT
+#### BIOS Boot
 
 <details>
-<summary>BIOS BOOT</summary>
+<summary>BIOS Boot</summary>
 
 Almost all x86 systems have support for BIOS booting, including newer UEFI-based machines that use an emulated BIOS. This is great, because you can use the same boot logic across all machines from the last centuries. But this wide compatibility is at the same time the biggest disadvantage of BIOS booting, because it means that the CPU is put into a 16-bit compatibility mode called real mode before booting so that archaic bootloaders from the 1980s would still work.
 
@@ -185,15 +185,15 @@ An exception signals that something is wrong with the current instruction. For e
 
 On x86 there are about 20 different CPU exception types. The most important are:
 
-- Page Fault: A page fault occurs on illegal memory accesses. For example, if the current instruction tries to read from an unmapped page or tries to write to a read-only page.
+- **Page Fault**: A page fault occurs on illegal memory accesses. For example, if the current instruction tries to read from an unmapped page or tries to write to a read-only page.
 
-- Invalid Opcode: This exception occurs when the current instruction is invalid, for example when we try to use newer SSE instructions on an old CPU that does not support them.
+- **Invalid Opcode**: This exception occurs when the current instruction is invalid, for example when we try to use newer SSE instructions on an old CPU that does not support them.
 
-- General Protection Fault: This is the exception with the broadest range of causes. It occurs on various kinds of access violations such as trying to execute a privileged instruction in user level code or writing reserved fields in configuration registers.
+- **General Protection Fault**: This is the exception with the broadest range of causes. It occurs on various kinds of access violations such as trying to execute a privileged instruction in user level code or writing reserved fields in configuration registers.
 
-- Double Fault: When an exception occurs, the CPU tries to call the corresponding handler function. If another exception occurs while calling the exception handler, the CPU raises a double fault exception. This exception also occurs when there is no handler function registered for an exception.
+- **Double Fault**: When an exception occurs, the CPU tries to call the corresponding handler function. If another exception occurs while calling the exception handler, the CPU raises a double fault exception. This exception also occurs when there is no handler function registered for an exception.
 
-- Triple Fault: If an exception occurs while the CPU tries to call the double fault handler function, it issues a fatal triple fault. We can't catch or handle a triple fault. Most processors react by resetting themselves and rebooting the operating system.
+- **Triple Fault**: If an exception occurs while the CPU tries to call the double fault handler function, it issues a fatal triple fault. We can't catch or handle a triple fault. Most processors react by resetting themselves and rebooting the operating system.
 
 For the full list of exceptions check out the [OSDev wiki](https://wiki.osdev.org/Exceptions).
 
@@ -215,6 +215,5 @@ A double fault behaves like a normal exception. It has the vector number `8` and
 **Thanks to [Phil OPP](https://github.com/phil-opp) for these valuable notes!**
 
 <br />
-<div align="center">
-  Made by Sunrit Jana with <3
-</div>
+
+<div align="center">Made by Sunrit Jana with ♥ </div>
