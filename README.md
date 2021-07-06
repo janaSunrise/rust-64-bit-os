@@ -9,7 +9,13 @@ Actual OS once I've learnt, using rust.
 
 ## Quickstart
 
-First, Get started with installing all the dependencies present using:
+First, Add the `rust-src` and `llvm-tools-preview` component.
+
+```
+rustup component add rust-src llvm-tools-preview
+```
+
+Then, Get started with installing all the dependencies present using:
 
 ```sh
 cargo build
@@ -36,7 +42,7 @@ rustup target add thumbv7em-none-eabihf
 cargo build --target thumbv7em-none-eabihf
 ```
 
-**Linker commands**
+**Build commands for OSes**
 
 ```sh
 # Linux
@@ -45,7 +51,7 @@ cargo rustc -- -C link-arg=-nostartfiles
 # Windows
 cargo rustc -- -C link-args="/ENTRY:_start /SUBSYSTEM:console"
 
-# macOS
+# MacOS
 cargo rustc -- -C link-args="-e __start -static -nostartfiles"
 ```
 
@@ -71,7 +77,7 @@ cargo bootimage
 **Booting up the OS image**
 
 ```sh
-qemu-system-x86_64 -drive format=raw,file=target/x86_64-blog_os/debug/bootimage-galvanized_os.bin
+qemu-system-x86_64 -drive format=raw,file=target/x86_64-rust-64-bit-os/debug/bootimage-rust-64-bit-os.bin
 
 # Easier option added!
 cargo run
@@ -216,4 +222,4 @@ A double fault behaves like a normal exception. It has the vector number `8` and
 
 <br />
 
-<div align="center">Made by Sunrit Jana with ♥ </div>
+<div align="center">Made by Sunrit Jana with ♥</div>
