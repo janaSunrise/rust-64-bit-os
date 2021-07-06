@@ -13,7 +13,7 @@ First, Add the `rust-src` and `llvm-tools-preview` component.
 
 ```
 rustup component add rust-src llvm-tools-preview
-```
+``` 
 
 Then, Get started with installing all the dependencies present using:
 
