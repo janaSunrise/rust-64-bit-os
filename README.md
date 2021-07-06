@@ -16,44 +16,66 @@ cargo build
 ```
 
 It will install the dependencies, and setup the environment.
-
-Now, You need to generate the Raw image. You can do so using:
-
-```sh
-cargo bootimage
-```
-
-Finally, You did it! Now the thing left is to boot the raw Disk image. Note 
-that you need Qemu installed to do so. Here's the command for it:
+Now, You need to boot up the OS. You need `QEMU` installed to do so. Here is the command:
 
 ```sh
-qemu-system-x86_64 -drive format=raw,file=target/x86_64-rust-64-bit-os/debug/bootimage-rust-64-bit-os.bin
+cargo run
 ```
 
 ### Commands
 
-#### Adding target for compilation on systems without OS, for example: bare metals
-  - Command: `rustup target add thumbv7em-none-eabihf`
+**Adding target for compilation on systems without OS, for example: bare metals**
 
-#### Building the target for No-OS systems
-  - Command: `cargo build --target thumbv7em-none-eabihf`
+```sh
+rustup target add thumbv7em-none-eabihf
+```
 
-#### Linker commands
-  - Linux: `cargo rustc -- -C link-arg=-nostartfiles`
-  - Windows: `cargo rustc -- -C link-args="/ENTRY:_start /SUBSYSTEM:console"`
-  - MacOS: `cargo rustc -- -C link-args="-e __start -static"`
+**Building the target for No-OS systems**
 
-#### Library `rust-src` to recompile the code, and get access to source code.
-  - Command: `rustup component add rust-src`
+```sh
+cargo build --target thumbv7em-none-eabihf
+```
 
-#### Installing bootimage, Adding a `LLVM tools preview` component and for running the OS
-  - Installation: `cargo install bootimage`
-  - Add comp: `rustup component add llvm-tools-preview`
-  - Usage: `cargo bootimage`
+**Linker commands**
 
-#### Booting
+```sh
+# Linux
+cargo rustc -- -C link-arg=-nostartfiles
 
-Command: `qemu-system-x86_64 -drive format=raw,file=target/x86_64-rust-64-bit-os/debug/bootimage-rust-64-bit-os.bin`
+# Windows
+cargo rustc -- -C link-args="/ENTRY:_start /SUBSYSTEM:console"
+
+# macOS
+cargo rustc -- -C link-args="-e __start -static -nostartfiles"
+```
+
+**Library `rust-src` to recompile the code, and get access to source code.**
+
+```sh
+rustup component add rust-src
+```
+
+**Installing bootimage, Adding a `LLVM tools preview` component and for running the OS**
+
+```sh
+# Installation
+cargo install bootimage
+
+# Adding components
+rustup component add llvm-tools-preview
+
+# Usage
+cargo bootimage
+```
+
+**Booting up the OS image**
+
+```sh
+qemu-system-x86_64 -drive format=raw,file=target/x86_64-blog_os/debug/bootimage-galvanized_os.bin
+
+# Easier option added!
+cargo run
+```
 
 ## Notes
 
