@@ -9,19 +9,19 @@ Actual OS once I've learnt, using rust.
 
 ## Quickstart
 
-First, Add the `rust-src` and `llvm-tools-preview` component.
+First, Add the `rust-src` and `llvm-tools-preview` component using `rustup`.
 
 ```
 rustup component add rust-src llvm-tools-preview
 ``` 
 
-Then, Get started with installing all the dependencies present using:
+Then, get started with installing all the dependencies present using:
 
 ```sh
 cargo build
 ```
 
-It will install the dependencies, and setup the environment.
+It will install the dependencies and setup the environment.
 Now, You need to boot up the OS. You need `QEMU` installed to do so. Here is the command:
 
 ```sh
@@ -30,7 +30,7 @@ cargo run
 
 ### Commands
 
-**Adding target for compilation on systems without OS, for example: bare metals**
+**Adding target for compilation on systems without OS [Bare metals]**
 
 ```sh
 rustup target add thumbv7em-none-eabihf
@@ -42,7 +42,7 @@ rustup target add thumbv7em-none-eabihf
 cargo build --target thumbv7em-none-eabihf
 ```
 
-**Build commands for OSes**
+**Build commands for Different OS**
 
 ```sh
 # Linux
