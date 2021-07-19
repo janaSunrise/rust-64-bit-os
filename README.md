@@ -42,7 +42,7 @@ rustup target add thumbv7em-none-eabihf
 cargo build --target thumbv7em-none-eabihf
 ```
 
-**Build commands for Different OS**
+**Linking commands for different OS**
 
 ```sh
 # Linux
@@ -77,6 +77,7 @@ cargo bootimage
 **Booting up the OS image**
 
 ```sh
+# Use qemu to boot into the raw image file.
 qemu-system-x86_64 -drive format=raw,file=target/x86_64-rust-64-bit-os/debug/bootimage-rust-64-bit-os.bin
 
 # Easier option added!
@@ -218,7 +219,7 @@ A double fault behaves like a normal exception. It has the vector number `8` and
 
 </details>
 
-**Thanks to [Phil OPP](https://github.com/phil-opp) for these valuable notes!**
+**Thanks to [Phil OPP](https://github.com/phil-opp) for these amazing and valuable notes!**
 
 <br />
 
