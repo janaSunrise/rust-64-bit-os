@@ -3,8 +3,8 @@
 
 extern crate alloc;
 
-use alloc::{boxed::Box, vec, vec::Vec, rc::Rc};
-use bootloader::{BootInfo, entry_point};
+use alloc::{boxed::Box, rc::Rc, vec, vec::Vec};
+use bootloader::{entry_point, BootInfo};
 use core::panic::PanicInfo;
 use rust_64_bit_os::println;
 
@@ -15,7 +15,7 @@ entry_point!(kernel_main);
 fn kernel_main(boot_info: &'static BootInfo) -> ! {
     use rust_64_bit_os::allocator;
     use rust_64_bit_os::memory::{self, BootInfoFrameAllocator};
-    use x86_64::{VirtAddr};
+    use x86_64::VirtAddr;
 
     println!("Welcome to my x86_64 bit OS!");
 
@@ -45,11 +45,17 @@ fn kernel_main(boot_info: &'static BootInfo) -> ! {
     let reference_counted = Rc::new(vec![1, 2, 3]);
     let cloned_reference = reference_counted.clone();
 
-    println!("Current reference count is {}", Rc::strong_count(&cloned_reference));
+    println!(
+        "Current reference count is {}",
+        Rc::strong_count(&cloned_reference)
+    );
 
     core::mem::drop(reference_counted);
 
-    println!("Reference count is {} now", Rc::strong_count(&cloned_reference));
+    println!(
+        "Reference count is {} now",
+        Rc::strong_count(&cloned_reference)
+    );
 
     println!("It did not crash!");
 
